@@ -1,0 +1,322 @@
+/* ===================================================
+   Aethryn Software Solutions – Global Styles
+   Design tokens: white/gray backgrounds, near-black text, blue accent
+   =================================================== */
+
+/* Google Fonts – Inter (must come before @import tailwindcss) */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Brand palette */
+    --color-bg: #ffffff;
+    --color-bg-alt: #f8fafc;
+    --color-text: #0f172a;
+    --color-text-muted: #64748b;
+    --color-border: #e2e8f0;
+    --color-accent: #2563eb;
+    --color-accent-hover: #1d4ed8;
+    --color-accent-light: #eff6ff;
+    --color-white: #ffffff;
+
+    /* Typography scale */
+    --font-family: "Inter", system-ui, -apple-system, sans-serif;
+    --font-size-base: 1rem; /* 16px */
+    --line-height-base: 1.625;
+
+    /* Border radius */
+    --radius-card: 0.75rem;
+    --radius-btn: 0.5rem;
+
+    /* Shadows */
+    --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08);
+    --shadow-card-hover: 0 4px 12px 0 rgb(0 0 0 / 0.1);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Accessible focus ring */
+  *:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Smooth anchor transitions */
+  a {
+    transition: color 150ms ease;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Consistent heading styles */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text);
+  }
+}
+
+/* ── Skip link for keyboard users ── */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  background: var(--color-accent);
+  color: white;
+  border-radius: var(--radius-btn);
+  font-weight: 600;
+}
+
+/* ── Section utilities ── */
+.section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+/* ── Card base ── */
+.card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 200ms ease, transform 200ms ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+/* ── Button base ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: var(--color-accent);
+  color: white;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: var(--radius-btn);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgb(37 99 235 / 0.35);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: transparent;
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: var(--radius-btn);
+  border: 2px solid var(--color-accent);
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease, transform 150ms ease;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  background: var(--color-accent);
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* ── Floating WhatsApp button ── */
+.whatsapp-float {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 50;
+  width: 3.5rem;
+  height: 3.5rem;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.18);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.25);
+}
+
+/* ── Section label ── */
+.section-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.75rem;
+}
+
+/* ── Divider ── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+}
+
+/* ── Input base ── */
+.input-base {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.input-base::placeholder {
+  color: #94a3b8;
+}
+
+.input-base:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 0.12);
+}
+
+.input-base.error {
+  border-color: #ef4444;
+}
+
+/* ── Tag badge ── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.65rem;
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 999px;
+}
+
+/* ── Navigation ── */
+.nav-link {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: color 150ms ease;
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-accent);
+}
+
+/* ── Prose content ── */
+.prose-content p {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.animate-delay-100 { animation-delay: 100ms; }
+.animate-delay-200 { animation-delay: 200ms; }
+.animate-delay-300 { animation-delay: 300ms; }
+
+/* ── Mobile menu ── */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 1.5rem;
+  cursor: pointer;
+}
+
+.mobile-menu span {
+  display: block;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 999px;
+  transition: transform 200ms ease, opacity 200ms ease;
+}
+
+/* ── Honey pot (spam protection) ── */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
